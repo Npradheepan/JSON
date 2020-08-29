@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+</head>
+<h1>Result For 3Years Studenden</h1>
+<button id="b">Result_1</button>
+<div id="d">
+
+</div>
+
+<body>
+      <center>
+            <script>
+
+                  document.getElementById("b").addEventListener("click", n);
+                  function n() {
+                        var veriable_1 = new XMLHttpRequest();
+                        veriable_1.open("GET", "index.json", "true");
+                        veriable_1.onreadystatechange = function () {
+                              if (this.readyState == 4 && this.status == 200) {
+                                    var veriable_2 = JSON.parse(veriable_1.responseText);
+                                    var veriable_3 = veriable_2.class;
+                                    var veriable_4 = " ";
+                                    for (var i = 0; i < veriable_3.length; i++) {
+                                          veriable_4 += "<br>" + "Name =" + veriable_3[i].name + "Garade = " + veriable_3[i].grade + "<hr>";
+                                    }
+                                    Document: getElementById("d").innerHTML = veriable_4;
+                              }
+                        };
+                        veriable_1.send();
+                  }
+            </script>
+      </center>
+</body>
+
+</html>
+index.json
+------------
+{
+      "class": [
+            {
+                  "Name": "Araya",
+                  "grade": "A"
+            },
+            {
+                  "Name": "Maya",
+                  "grade": "B"
+            }
+      ]
+}
